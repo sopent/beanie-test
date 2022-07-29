@@ -1,8 +1,8 @@
 from beanie import Document
-from pydantic import BaseModel
 from typing import Optional
 import hashlib
 import uuid
+
 
 class User(Document):
     username: str
@@ -10,13 +10,14 @@ class User(Document):
     role: str
     permissions_level: int
     access_token: Optional[uuid.UUID]
-    
+
     def hash_password(self, password):
-        return hashlib.sha256(password.encode("utf-8")).hexdigest() # @todo add salt
+        # @todo add salt
+        return hashlib.sha256(password.encode("utf-8")).hexdigest()
 
     def make_access_token(self):
         return uuid.uuid4()
-        
+
     class Settings:
         name = "users"
 

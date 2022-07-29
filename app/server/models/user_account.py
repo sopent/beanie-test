@@ -1,13 +1,10 @@
 from beanie import Document
-from pydantic import BaseModel, Field
-from typing import Optional
 from iso4217 import Currency
 from app.server.lib.object_id import PydanticObjectId
-from bson.objectid import ObjectId
-from typing import Union
+
 
 class UserAccount(Document):
-    user_id: PydanticObjectId 
+    user_id: PydanticObjectId
     currency: Currency
     amount_incoming_payments: float
     count_incoming_payments: int

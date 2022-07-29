@@ -1,13 +1,14 @@
-from pydantic import BaseModel, validator
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
 
+
 class PydanticObjectId(ObjectId):
     pass
+
     @classmethod
     def __get_validators__(cls):
         yield cls.validate
-        
+
     @classmethod
     def validate(cls, v):
         try:
